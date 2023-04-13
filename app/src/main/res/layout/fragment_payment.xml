@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PaymentFragment">
+    tools:context=".paymentFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,6 +17,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="Food"
+            app:cornerRadius="2dp"
+            android:backgroundTint="@color/paymentRed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,6 +29,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="Toy"
+            app:cornerRadius="2dp"
+            android:backgroundTint="@color/paymentRed"
             app:layout_constraintStart_toEndOf="@+id/buttonFood"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,6 +41,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="Snacks"
+            app:cornerRadius="2dp"
+            android:backgroundTint="@color/paymentRed"
             app:layout_constraintStart_toEndOf="@+id/buttonToy"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,6 +53,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="Mortgage"
+            app:cornerRadius="2dp"
+            android:backgroundTint="@color/paymentRed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonFood" />
 
@@ -57,6 +65,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="Transaction"
+            app:cornerRadius="2dp"
+            android:backgroundTint="@color/paymentRed"
             app:layout_constraintStart_toEndOf="@+id/buttonMortgage"
             app:layout_constraintTop_toBottomOf="@+id/buttonToy" />
 
@@ -67,7 +77,21 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:text="Games"
+            app:cornerRadius="2dp"
+            android:backgroundTint="@color/paymentRed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonMortgage" />
+
+        <Button
+            android:id="@+id/buttonOtherPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="Other"
+            app:cornerRadius="2dp"
+            android:backgroundTint="@color/paymentRed"
+            app:layout_constraintStart_toEndOf="@+id/buttonGames"
+            app:layout_constraintTop_toBottomOf="@+id/buttonTransaction" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
