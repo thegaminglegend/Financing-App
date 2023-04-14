@@ -103,5 +103,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView" />
 
+    <TextView
+        android:id="@+id/textViewCategoryActual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:textColor="#000000"
+        android:textColorHint="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewCategory"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

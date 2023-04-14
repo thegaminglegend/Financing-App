@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    String text = "";
+    public static String text = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
         //Initialize the buttons to control fragments
         initFragmentButtons();
 
-        //initPayButtons();
-        //initCategory();
     }
 
     //Function to initialize the buttons to control fragments
@@ -81,25 +79,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-    private void initPayButtons(){
-        //Find view with ID
-        Button btnFood = findViewById(R.id.buttonFood);
-
-
-
-        int x =0;
-        btnFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                text = "FOOD";
-            }
-        });
-    }
-
-    private void initCategory(){
-        TextView category = findViewById(R.id.textViewCategory);
-        category.setText("Category " + text);
-    }
 }

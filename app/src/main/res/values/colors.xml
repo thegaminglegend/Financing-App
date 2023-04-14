@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="incomeGreen">#1a9991</color>
     <color name="paymentRed">#e3513e</color>
+    <color name="darkGray">#333333</color>
+
 
 </resources>

@@ -4,17 +4,25 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link paymentFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
+
+
 public class paymentFragment extends Fragment {
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,9 +70,105 @@ public class paymentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_payment, container, false);
+        View view = inflater.inflate(R.layout.fragment_payment, container, false);
+
+        // Call the function to initialize the button
+        initPayButtons(view);
+
+        // Return the inflated view
+        return view;
     }
 
+    private void initPayButtons(View view){
+        //*******Food Button*****************************************************
+        // Get a reference to Main activity
+        MainActivity activity = (MainActivity) getActivity();
 
+        //Find view with ID
+        Button btnFood = view.findViewById(R.id.buttonFood);
+        TextView category = activity.findViewById(R.id.textViewCategoryActual);
+
+        //Set category when clicked
+        btnFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("FOOD");
+            }
+        });
+
+        //*******TOY Button*****************************************************
+        //Find view with ID
+        Button btnToy = view.findViewById(R.id.buttonToy);
+
+        //Set category when clicked
+        btnToy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("TOY");
+
+            }
+        });
+
+        //*******SNACKS Button*****************************************************
+        //Find view with ID
+        Button btnSnack = view.findViewById(R.id.buttonSnacks);
+
+        //Set category when clicked
+        btnSnack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("SNACKS");
+            }
+        });
+
+        //*******Mortgage Button*****************************************************
+        //Find view with ID
+        Button btnMortgage = view.findViewById(R.id.buttonMortgage);
+
+        //Set category when clicked
+        btnMortgage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("MORTGAGE");
+            }
+        });
+
+        //*******Transaction Button*****************************************************
+        //Find view with ID
+        Button btnTransaction = view.findViewById(R.id.buttonTransaction);
+
+        //Set category when clicked
+        btnTransaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("TRANSACTION");
+            }
+        });
+
+        //*******Games Button*****************************************************
+        //Find view with ID
+        Button btnGames = view.findViewById(R.id.buttonGames);
+
+        //Set category when clicked
+        btnGames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("GAMES");
+            }
+        });
+
+        //*******OTHER Button*****************************************************
+        //Find view with ID
+        Button btnOther = view.findViewById(R.id.buttonOtherPayment);
+
+        //Set category when clicked
+        btnOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("OTHER");
+            }
+        });
+
+    }
 
 }
