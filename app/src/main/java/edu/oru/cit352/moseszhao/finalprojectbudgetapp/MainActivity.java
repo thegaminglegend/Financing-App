@@ -9,8 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import android.text.format.DateFormat;
+import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.SaveDateListener {
 
     public static String text = "";
 
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialize the buttons to control fragments
         initFragmentButtons();
+        initChangeDateButton();
 
     }
 
@@ -79,4 +83,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //Function to set the date to the selected formatted date
+    @Override
+    public void didFinishDatePickerDialog(Calendar selectedTime) {
+        //Find view with ID
+        TextView date = findViewById(R.id.textViewDate);
+        date.setText(DateFormat.format("MM/dd/yyyy", selectedTime));
+    }
+    
+    //Function to initialize the date changing button
+    private void initChangeDateButton(){
+        //Find view with ID
+        Button changeDate = findViewById(R.id.buttonDate);
+        //Opens date picker dialog when clicked
+        changeDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm = getSupportFragmentManager();
+                DatePickerDialog datePickerDialog = new DatePickerDialog();
+                datePickerDialog.show(fm, "DatePick");
+
+            }
+        });
+    }
 }

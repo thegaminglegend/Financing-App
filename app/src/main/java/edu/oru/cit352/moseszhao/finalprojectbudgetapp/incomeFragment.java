@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,7 +64,107 @@ public class incomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_income, container, false);
+        View view = inflater.inflate(R.layout.fragment_income, container, false);
+
+        // Call the function to initialize the button
+        initIncomeButtons(view);
+
+        // Return the inflated view
+        return view;
     }
+
+
+    private void initIncomeButtons(View view){
+        //*******Pay Button*****************************************************
+        // Get a reference to Main activity
+        MainActivity activity = (MainActivity) getActivity();
+
+        //Find view with ID
+        Button btnPay = view.findViewById(R.id.buttonPay);
+        TextView category = activity.findViewById(R.id.textViewCategoryActual);
+
+        //Set category when clicked
+        btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("PAY");
+            }
+        });
+
+        //*******GIFT Button*****************************************************
+        //Find view with ID
+        Button btnGift = view.findViewById(R.id.buttonGift);
+
+        //Set category when clicked
+        btnGift.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("TOY");
+
+            }
+        });
+
+        //*******SAVING Button*****************************************************
+        //Find view with ID
+        Button btnSaving = view.findViewById(R.id.buttonSaving);
+
+        //Set category when clicked
+        btnSaving.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("SAVING");
+            }
+        });
+
+        //*******Red-Bag Button*****************************************************
+        //Find view with ID
+        Button btnRedBag = view.findViewById(R.id.buttonRedBag);
+
+        //Set category when clicked
+        btnRedBag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("REDBAG");
+            }
+        });
+
+        //*******Transaction Button*****************************************************
+        //Find view with ID
+        Button btnTransaction = view.findViewById(R.id.buttonTransactionPay);
+
+        //Set category when clicked
+        btnTransaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("TRANSACTION");
+            }
+        });
+
+        //*******Stock Button*****************************************************
+        //Find view with ID
+        Button btnStock = view.findViewById(R.id.buttonStock);
+
+        //Set category when clicked
+        btnStock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("STOCK");
+            }
+        });
+
+        //*******OTHER Button*****************************************************
+        //Find view with ID
+        Button btnOther = view.findViewById(R.id.buttonOtherIncome);
+
+        //Set category when clicked
+        btnOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                category.setText("OTHER");
+            }
+        });
+
+    }
+
 
 }
