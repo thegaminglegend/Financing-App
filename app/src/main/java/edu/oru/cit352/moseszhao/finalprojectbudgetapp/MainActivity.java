@@ -1,15 +1,22 @@
 package edu.oru.cit352.moseszhao.finalprojectbudgetapp;
 
+//Imports
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import android.text.format.DateFormat;
+
+import java.time.Month;
 import java.util.Calendar;
 
 
@@ -24,8 +31,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         //Initialize the buttons to control fragments
         initFragmentButtons();
-        initChangeDateButton();
 
+        //Initialize buttons
+        initChangeDateButton();
+        initMonthViewButton();
+
+        //Initialize text views
+        initDate();
     }
 
     //Function to initialize the buttons to control fragments
@@ -83,6 +95,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
 
+    //FUnction to initialize the date to the current date
+    public void initDate(){
+        TextView date = findViewById(R.id.textViewDate);
+        date.setText(DateFormat.format("MM/dd/yyyy", Calendar.getInstance()));
+    }
+
+
     //Function to set the date to the selected formatted date
     @Override
     public void didFinishDatePickerDialog(Calendar selectedTime) {
@@ -107,4 +126,22 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
     }
+
+    //Function to initialize monthlyView button
+    private void initMonthViewButton(){
+        //Find View With ID
+        ImageView month = findViewById(R.id.imageViewMonth);
+        //Go to monthView activity when clicked
+        month.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MonthlyViewActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+
 }
