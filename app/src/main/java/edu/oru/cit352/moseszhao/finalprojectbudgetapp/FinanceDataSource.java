@@ -131,47 +131,42 @@ public class FinanceDataSource {
 //        return contactNames;
 //    }
 //
-//    //Method to retrieve data from DB
-//    public ArrayList<Contact> getContacts(String sortField, String sortOrder) {
-//        //Instance Variable contains arraylist of contact object
-//        ArrayList<Contact> contacts = new ArrayList<Contact>();
-//
-//        try {
-//            //Get all data from contact
-//            String query = "SELECT * FROM contact ORDER BY " + sortField + " " + sortOrder;
-//            //Initialize cursor
-//            Cursor cursor = database.rawQuery(query, null);
-//            //Instance Variable
-//            Contact newContact;
-//            cursor.moveToFirst();
-//            //Loop through DB until get every data from every entry
-//            while (!cursor.isAfterLast()) {
-//                //Get the data from each relevant column of the entry cursor pointing to
-//                newContact = new Contact();
-//                newContact.setContactID(cursor.getInt(0));
-//                newContact.setContactName(cursor.getString(1));
-//                newContact.setStreetAddress(cursor.getString(2));
-//                newContact.setCity(cursor.getString(3));
-//                newContact.setState(cursor.getString(4));
-//                newContact.setZipCode(cursor.getString(5));
-//                newContact.setPhoneNumber(cursor.getString(6));
-//                newContact.setCellNumber(cursor.getString(7));
-//                newContact.seteMail(cursor.getString(8));
-//                Calendar calendar = Calendar.getInstance();
-//                calendar.setTimeInMillis(Long.valueOf(cursor.getString(9)));
-//                newContact.setBirthday(calendar);
-//                contacts.add(newContact);
-//                //Increment Cursor to go through all entry
-//                cursor.moveToNext();
-//            }
-//            //Close cursor
-//            cursor.close();
-//            //If get nothing give contact a Null arraylist
-//        } catch (Exception e) {
-//            contacts = new ArrayList<Contact>();
-//        }
-//        return contacts;
-//    }
+    //Method to retrieve data from DB
+    public ArrayList<Finance> getFiances() {
+        //Instance Variable contains arraylist of Finance object
+        ArrayList<Finance> finances = new ArrayList<Finance>();
+
+        try {
+            //Get all data from contact
+            String query = "SELECT * FROM finance";
+            //Initialize cursor
+            Cursor cursor = database.rawQuery(query, null);
+            //Instance Variable
+            Finance newFinance;
+            cursor.moveToFirst();
+            //Loop through DB until get every data from every entry
+            while (!cursor.isAfterLast()) {
+                //Get the data from each relevant column of the entry cursor pointing to
+                newFinance = new Finance();
+                newFinance.setFinanceID(cursor.getInt(0));
+                newFinance.setAmount(cursor.getFloat(1));
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(Long.valueOf(cursor.getString(2)));
+                newFinance.setDate(calendar);
+                newFinance.setCategory(cursor.getString(3));
+                finances.add(newFinance);
+                //Increment Cursor to go through all entry
+                cursor.moveToNext();
+            }
+            //Close cursor
+            cursor.close();
+            //If get nothing give contact a Null arraylist
+        } catch (Exception e) {
+            finances = new ArrayList<Finance>();
+        }
+        return finances;
+    }
+
 //
 //    //Method to  get specific information with contactId
 //    public Contact getSpecificContact(int contactId) {

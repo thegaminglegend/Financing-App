@@ -128,6 +128,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                         .setReorderingAllowed(true)
                         .addToBackStack("name")
                         .commit();
+                //Set the instance to be pay or income
+                currentFinance.setPayOrIncome(false);
             }
         });
 
@@ -149,6 +151,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                         .setReorderingAllowed(true)
                         .addToBackStack("name")
                         .commit();
+                //Set the instance to be pay or income
+                currentFinance.setPayOrIncome(true);
             }
         });
     }
