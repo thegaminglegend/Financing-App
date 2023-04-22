@@ -88,12 +88,11 @@ public class FinanceAdapter extends RecyclerView.Adapter {
         cvh.getDateTextView().setText(DateFormat.format("MM/dd/yyyy",financeData.get(position).getDate().getTimeInMillis()));
         cvh.getCategoryTextView().setText(financeData.get(position).getCategory());
 
-
-        //////
-        if(    ){
-            cvh.getCategoryTextView().setTextColor(Color.RED);
+        //Check if is pay or not and set the text color
+        if(financeData.get(position).getPayOrIncome().equals("true")){
+            cvh.getMoneyTextView().setTextColor(Color.parseColor("#e3513e"));
         } else {
-            cvh.getCategoryTextView().setTextColor(Color.BLUE);
+            cvh.getMoneyTextView().setTextColor(Color.parseColor("#1a9991"));
         }
 
 

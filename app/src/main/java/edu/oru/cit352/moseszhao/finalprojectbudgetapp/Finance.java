@@ -17,7 +17,7 @@ public class Finance {
     private String category;
     private float amount;
     private Calendar date;
-    private boolean payOrIncome;
+    private String payOrIncome;
 
     //Constructor
     public Finance() {
@@ -59,7 +59,7 @@ public class Finance {
         this.date = date;
     }
 
-    public boolean getPayOrIncome() {return payOrIncome;}
+    public String getPayOrIncome() {return payOrIncome;}
 
-    public void setPayOrIncome(boolean payOrIncome){this.payOrIncome = payOrIncome;}
+    public void setPayOrIncome(String payOrIncome){this.payOrIncome = payOrIncome;}
 }

@@ -55,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         //Initialize Functions
         initTextChangedEvents();
 
+        //Set default to be Pay
+
+        currentFinance.setPayOrIncome("true");
 
     }
 
@@ -110,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         btnPayment.setEnabled(false);
         btnPayment.setTextColor(Color.BLACK);
 
+
         //Change fragmentView to income fragment view when clicked
         btnIncome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                         .addToBackStack("name")
                         .commit();
                 //Set the instance to be pay or income
-                currentFinance.setPayOrIncome(false);
+                currentFinance.setPayOrIncome("false");
             }
         });
 
@@ -152,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                         .addToBackStack("name")
                         .commit();
                 //Set the instance to be pay or income
-                currentFinance.setPayOrIncome(true);
+                currentFinance.setPayOrIncome("true");
             }
         });
     }

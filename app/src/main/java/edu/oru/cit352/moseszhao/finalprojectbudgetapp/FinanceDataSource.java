@@ -49,6 +49,7 @@ public class FinanceDataSource {
             initialValues.put("category", f.getCategory());
             initialValues.put("amount", f.getAmount());
             initialValues.put("date", String.valueOf(f.getDate().getTimeInMillis()));
+            initialValues.put("payorincome", f.getPayOrIncome());
 
             //Insert everything into the database and get true if successfully inserted
             didSucceed = database.insert("finance", null, initialValues) > 0;
@@ -73,6 +74,7 @@ public class FinanceDataSource {
             updateValues.put("category", f.getCategory());
             updateValues.put("amount", f.getAmount());
             updateValues.put("date", String.valueOf(f.getDate().getTimeInMillis()));
+            updateValues.put("payorincome", f.getPayOrIncome());
 
             //Update everything into the database and get true if successfully updated
             didSucceed = database.update("contact", updateValues, "_id=" + rowId, null) > 0;
@@ -105,6 +107,57 @@ public class FinanceDataSource {
         }
         return lastId;
     }
+
+    //Function to get the sum of all pay
+    public float getSumPay(){
+
+        //Instance variable
+        float x = 0;
+
+        try {
+            //Get the sum of all pay
+            String query = "SELECT SUM(amount) FROM finance WHERE payorincome = 'true'";;
+            //Pointer to points to the last row of the database
+            Cursor cursor = database.rawQuery(query, null);
+            //Point cursor to the first row after the query
+            cursor.moveToFirst();
+            //Get the first column to get Id
+            x = cursor.getFloat(0);
+            cursor.close();
+        }
+        //If exception set x as -1
+        catch (Exception e){
+            x = -1;
+        }
+
+        return x;
+    }
+
+    //Function to get the sum of all income
+    public float getSumIncome(){
+
+        //Instance variable
+        float x = 0;
+
+        try {
+            //Get the sum of all income
+            String query = "SELECT SUM(amount) FROM finance WHERE payorincome = 'false'";;
+            //Pointer to points to the last row of the database
+            Cursor cursor = database.rawQuery(query, null);
+            //Point cursor to the first row after the query
+            cursor.moveToFirst();
+            //Get the first column to get Id
+            x = cursor.getFloat(0);
+            cursor.close();
+        }
+        //If exception set x as -1
+        catch (Exception e){
+            x = -1;
+        }
+
+        return x;
+    }
+
 
 //    //Method to get all the contact name from DB
 //    public ArrayList<String> getContactName(){
@@ -154,6 +207,7 @@ public class FinanceDataSource {
                 calendar.setTimeInMillis(Long.valueOf(cursor.getString(2)));
                 newFinance.setDate(calendar);
                 newFinance.setCategory(cursor.getString(3));
+                newFinance.setPayOrIncome(cursor.getString(4));
                 finances.add(newFinance);
                 //Increment Cursor to go through all entry
                 cursor.moveToNext();
@@ -166,6 +220,8 @@ public class FinanceDataSource {
         }
         return finances;
     }
+
+
 
 //
 //    //Method to  get specific information with contactId

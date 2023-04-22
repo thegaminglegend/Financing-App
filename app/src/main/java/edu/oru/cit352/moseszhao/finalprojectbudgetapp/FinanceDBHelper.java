@@ -19,13 +19,13 @@ public class FinanceDBHelper extends SQLiteOpenHelper {
 
     //Declare Variables
     private static final String DATABASE_NAME = "myfinance.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 8;
 
     // Database creation sql statement
     private static final String CREATE_TABLE_FINANCE =
             "create table finance (_id integer primary key autoincrement, "
                     + "amount float not null,"
-                    + "date text, category text not null);";
+                    + "date text, category text not null, payorincome text not null);";
 
     //Constructor
     public FinanceDBHelper(Context context) {
