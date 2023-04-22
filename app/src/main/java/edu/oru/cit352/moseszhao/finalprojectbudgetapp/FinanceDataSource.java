@@ -173,31 +173,6 @@ public class FinanceDataSource {
     }
 
 
-//    //Method to get all the contact name from DB
-//    public ArrayList<String> getContactName(){
-//        //Reference Variable
-//        ArrayList<String> contactNames = new ArrayList<>();
-//        try{
-//            //query to get the contactnname
-//            String query = "Select contactname from contact";
-//            Cursor cursor = database.rawQuery(query, null);
-//            cursor.moveToFirst();
-//
-//            //Loop through the DB until the last entry and all on them into contactNames
-//            while(!cursor.isAfterLast()){
-//                contactNames.add(cursor.getString(0));
-//                cursor.moveToNext();
-//            }
-//            //close cursor
-//            cursor.close();
-//        }
-//        //If did not get anything set contactNames as a null ArrayList
-//        catch (Exception e){
-//            contactNames = new ArrayList<String>();
-//        }
-//        return contactNames;
-//    }
-//
     //Method to retrieve data from DB
     public ArrayList<Finance> getFiances(int currentMonth, int currentYear) {
         //Instance Variable contains arraylist of Finance object
@@ -272,12 +247,12 @@ public class FinanceDataSource {
 //    }
 
     //Method for deleting Contact
-    public boolean deleteContact(int contactId) {
+    public boolean deleteFinance(int financeID) {
         //Declare variable
         boolean didDelete = false;
         try{
             //Delete the contact from DB
-            didDelete = database.delete("contact", "_id=" + contactId, null) > 0;
+            didDelete = database.delete("finance", "_id=" + financeID, null) > 0;
         } catch (Exception e) {
             //Do nothing if fail
         }

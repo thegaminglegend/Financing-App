@@ -1,6 +1,8 @@
 package edu.oru.cit352.moseszhao.finalprojectbudgetapp;
 
 //Imports
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 
 
 import android.content.Context;
+import android.widget.Toast;
 
 
 /*
@@ -32,7 +35,6 @@ public class FinanceAdapter extends RecyclerView.Adapter {
     //private boolean isDeleting;
     private Context parentContext;
 
-
     //Embedded class for viewHolder that stores the data of the financial instance
     public class FinanceViewHolder extends RecyclerView.ViewHolder {
         //Reference Variables
@@ -47,7 +49,6 @@ public class FinanceAdapter extends RecyclerView.Adapter {
             textMoney = itemView.findViewById(R.id.textMoney);
             textDate = itemView.findViewById(R.id.textDate);
             textCategory = itemView.findViewById(R.id.textCategory);
-
         }
 
         //Getters
@@ -95,21 +96,33 @@ public class FinanceAdapter extends RecyclerView.Adapter {
             cvh.getMoneyTextView().setTextColor(Color.parseColor("#1a9991"));
         }
 
+        //delete a financial instance when long click an item
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
 
-        //Check if is in delete mode
-//        if(isDeleting){
-//            //Make delete button to be visible
-//            cvh.getDeleteButton().setVisibility(View.VISIBLE);
-//            //Set listener to call method to delete the contact
-//            cvh.getDeleteButton().setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    deleteItem(position);
-//                }
-//            });
-//        } else {
-//            cvh.getDeleteButton().setVisibility(View.INVISIBLE);
-//        }
+                //Display a confirmation dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(parentContext);
+                builder.setTitle("Delete Item")
+                        .setMessage("Are you sure you want to delete this item?")
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Remove the financial instance
+                                deleteItem(position);
+
+                                //Notify the adapter that an item has been removed
+                                notifyItemRemoved(position);
+                            }
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .show();
+
+                // Return true to in
+                return true;
+            }
+        });
+
     }
 
     //Method to get the number of Items
@@ -118,36 +131,30 @@ public class FinanceAdapter extends RecyclerView.Adapter {
         return financeData.size();
     }
 
-    //Method to delete Item
-//    private void deleteItem(int position) {
-//        //Get contact to delete with position
-//        Contact contact = contactData.get(position);
-//        //Instance of ContactDataSource
-//        ContactDataSource ds = new ContactDataSource(parentContext);
-//        try {
-//            //Open DB call method to delete the contact record and closeDB
-//            ds.open();
-//            boolean didDelete = ds.deleteContact(contact.getContactID());
-//            ds.close();
-//            //If successfully deleted remove the contact from the ArrayLIst and reload the display
-//            if (didDelete) {
-//                contactData.remove(position);
-//                notifyDataSetChanged();
-//            }
-//            //If not show fail message
-//            else {
-//                Toast.makeText(parentContext, "Delete Failed!", Toast.LENGTH_LONG).show();
-//            }
-//        }
-//        catch (Exception e) {
-//            //Do nothing if fails
-//        }
-//    }
-
-    //Method to set isDeleting to true or false
-    //public void setDelete(boolean b) {
-     //   isDeleting = b;
-    //}
-
+    //Function to delete Item
+    private void deleteItem(int position) {
+        //Get finance instance to delete with position
+        Finance finance = financeData.get(position);
+        //Instance of financedatasource
+        FinanceDataSource fs = new FinanceDataSource(parentContext);
+        try {
+            //Open DB call method to delete the contact record and closeDB
+            fs.open();
+            boolean didDelete = fs.deleteFinance(finance.getFinanceID());
+            fs.close();
+            //If successfully deleted remove the contact from the ArrayLIst and reload the display
+            if (didDelete) {
+                financeData.remove(position);
+                notifyDataSetChanged();
+            }
+            //If not show fail message
+            else {
+                Toast.makeText(parentContext, "Delete Failed!", Toast.LENGTH_LONG).show();
+            }
+        }
+        catch (Exception e) {
+            //Do nothing if fails
+        }
+    }
 
 }

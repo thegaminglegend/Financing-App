@@ -6,7 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,6 +46,7 @@ public class MonthlyViewActivity extends AppCompatActivity {
         initNet(currentMonth, currentYear);
         initMonth();
         initChangeMonthButtons();
+        initRecyclerChangeEvent();
 
     }
 
@@ -90,7 +94,7 @@ public class MonthlyViewActivity extends AppCompatActivity {
     }
 
     //Function to set the net and sum of income and pay
-    private void initNet(int currentMonth, int currentYear){
+    public void initNet(int currentMonth, int currentYear){
         TextView net = findViewById(R.id.textViewNetActual);
         TextView monthIncome = findViewById(R.id.textViewMonthIncome);
         TextView monthPay = findViewById(R.id.textViewMonthPay);
@@ -189,4 +193,15 @@ public class MonthlyViewActivity extends AppCompatActivity {
         });
     }
 
+    //Function to set the amount when it is changed
+    private void initRecyclerChangeEvent() {
+        //Find View by ID
+        final RecyclerView rvFinances = findViewById(R.id.rvFinance);
+        rvFinances.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View view, int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
+                initNet(currentMonth, currentYear);
+            }
+        });
+    }
 }
