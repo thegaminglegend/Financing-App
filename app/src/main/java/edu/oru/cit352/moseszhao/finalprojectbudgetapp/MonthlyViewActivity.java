@@ -16,6 +16,7 @@ import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MonthlyViewActivity extends AppCompatActivity {
 
@@ -24,6 +25,10 @@ public class MonthlyViewActivity extends AppCompatActivity {
     FinanceAdapter financeAdapter;
     RecyclerView financeList;
 
+    // Get the current month and year
+    Calendar calendar = Calendar.getInstance();
+    int currentMonth = calendar.get(Calendar.MONTH) + 1; // Add 1 to match database month format
+    int currentYear = calendar.get(Calendar.YEAR);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +38,11 @@ public class MonthlyViewActivity extends AppCompatActivity {
         //Initialize buttons
         initAddButton();
 
-        //Initialize a
-        initFinance();
-
-        initNet();
+        //Initialize Views
+        initFinance(currentMonth,currentYear);
+        initNet(currentMonth, currentYear);
+        initMonth();
+        initChangeMonthButtons();
 
     }
 
@@ -55,17 +61,18 @@ public class MonthlyViewActivity extends AppCompatActivity {
         });
     }
 
-    //Function to initialize
-    private void initFinance(){
+    //Function to initialize each finance instance
+    private void initFinance(int currentMonth, int currentYear){
 
         //To get the data from database and display it
         //Instance variable
         FinanceDataSource fs = new FinanceDataSource(this);
 
         try {
+
             //Open DB get contacts and close DB
             fs.open();
-            finances = fs.getFiances();
+            finances = fs.getFiances(currentMonth,currentYear);
             fs.close();
             //Find view with ID
             financeList = findViewById(R.id.rvFinance);
@@ -82,7 +89,8 @@ public class MonthlyViewActivity extends AppCompatActivity {
         }
     }
 
-    private void initNet(){
+    //Function to set the net and sum of income and pay
+    private void initNet(int currentMonth, int currentYear){
         TextView net = findViewById(R.id.textViewNetActual);
         TextView monthIncome = findViewById(R.id.textViewMonthIncome);
         TextView monthPay = findViewById(R.id.textViewMonthPay);
@@ -94,20 +102,21 @@ public class MonthlyViewActivity extends AppCompatActivity {
         try {
             //Open DB get contacts and close DB
             fs.open();
-            float x = fs.getSumPay();
-            float y = fs.getSumIncome();
+            //Get teh sum and net of pay and income
+            float x = fs.getSumPay(currentMonth, currentYear);
+            float y = fs.getSumIncome(currentMonth, currentYear);
             float z = y-x;
             fs.close();
 
             // Create a DecimalFormat object with desired format pattern
-            DecimalFormat decimalFormat = new DecimalFormat("#,##0.00"); // example format pattern
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
 
             // Format the float value as a string
             String formattedStringPay = decimalFormat.format(x);
             String formattedStringIncome = decimalFormat.format(y);
             String formattedStringNet = decimalFormat.format(z);
 
-
+            //Set the textViews
             monthPay.setText(formattedStringPay);
             monthIncome.setText(formattedStringIncome);
             net.setText(formattedStringNet);
@@ -115,12 +124,69 @@ public class MonthlyViewActivity extends AppCompatActivity {
 
             //If something wrong show error text
         } catch (Exception e) {
-            Toast.makeText(this, "Error retrieving sum of pay", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error retrieving sum and net of payment", Toast.LENGTH_LONG).show();
         }
+    }
+
+    //Function to initialize the Month
+    private void initMonth(){
+
+        //Find View with ID
+        TextView monthDate = findViewById(R.id.textViewMonthDate);
 
 
+        // Create an array of month names in English
+        String[] monthNames = {"January", "February", "March",
+                "April", "May", "June",
+                "July", "August", "September",
+                "October", "November", "December"};
+
+        // Set the month and year as text in the TextView
+        monthDate.setText(monthNames[currentMonth-1] + " " + currentYear);
 
 
+    }
+
+    //Function to initialize button to change the financial instance and month
+    private void initChangeMonthButtons(){
+
+        //Find View with ID
+        ImageView left = findViewById(R.id.imageViewLeft);
+        ImageView right = findViewById(R.id.imageViewRight);
+
+        left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Decrement current month
+                currentMonth--;
+                //Check if past january if so reset currentmonth to December and decrement Year
+                if(currentMonth==0){
+                    currentMonth=12;
+                    currentYear--;
+                }
+                //Reset the month and financial instance for the month and year
+                initFinance(currentMonth,currentYear);
+                initMonth();
+                initNet(currentMonth,currentYear);
+            }
+        });
+
+        right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Increment current month
+                currentMonth++;
+                //Check if past December if so reset currentmonth to January and increment Year
+                if(currentMonth==13){
+                    currentMonth=1;
+                    currentYear++;
+                }
+                //Reset the financial instance for the month and year
+                initFinance(currentMonth,currentYear);
+                initMonth();
+                initNet(currentMonth,currentYear);
+            }
+        });
     }
 
 }

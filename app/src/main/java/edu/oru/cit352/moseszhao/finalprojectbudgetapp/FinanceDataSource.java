@@ -109,41 +109,55 @@ public class FinanceDataSource {
     }
 
     //Function to get the sum of all pay
-    public float getSumPay(){
+    public float getSumPay(int currentMonth, int currentYear){
 
         //Instance variable
         float x = 0;
 
         try {
-            //Get the sum of all pay
-            String query = "SELECT SUM(amount) FROM finance WHERE payorincome = 'true'";;
+
+            // Convert currentMonth and currentYear to String with leading zero if necessary
+            String currentMonthString = String.format("%02d", currentMonth);
+            String currentYearString = String.valueOf(currentYear);
+
+            // Query to retrieve sum of all pay for the current month
+            String query = "SELECT SUM(amount) FROM finance WHERE payorincome = 'true' AND strftime('%m', date/1000, 'unixepoch') = ? AND strftime('%Y', date/1000, 'unixepoch') = ?";
+            String[] selectionArgs = {currentMonthString, currentYearString};
             //Pointer to points to the last row of the database
-            Cursor cursor = database.rawQuery(query, null);
+            Cursor cursor = database.rawQuery(query, selectionArgs);
+
             //Point cursor to the first row after the query
             cursor.moveToFirst();
             //Get the first column to get Id
             x = cursor.getFloat(0);
             cursor.close();
         }
-        //If exception set x as -1
+        //If exception set x as 0
         catch (Exception e){
-            x = -1;
+            x = 0;
         }
 
         return x;
     }
 
     //Function to get the sum of all income
-    public float getSumIncome(){
+    public float getSumIncome(int currentMonth, int currentYear){
 
         //Instance variable
         float x = 0;
 
         try {
-            //Get the sum of all income
-            String query = "SELECT SUM(amount) FROM finance WHERE payorincome = 'false'";;
+
+            // Convert currentMonth and currentYear to String with leading zero if necessary
+            String currentMonthString = String.format("%02d", currentMonth);
+            String currentYearString = String.valueOf(currentYear);
+
+            // Query to retrieve sum of all income for the current month
+            String query = "SELECT SUM(amount) FROM finance WHERE payorincome = 'false' AND strftime('%m', date/1000, 'unixepoch') = ? AND strftime('%Y', date/1000, 'unixepoch') = ?";
+            String[] selectionArgs = {currentMonthString, currentYearString};
             //Pointer to points to the last row of the database
-            Cursor cursor = database.rawQuery(query, null);
+            Cursor cursor = database.rawQuery(query, selectionArgs);
+
             //Point cursor to the first row after the query
             cursor.moveToFirst();
             //Get the first column to get Id
@@ -152,7 +166,7 @@ public class FinanceDataSource {
         }
         //If exception set x as -1
         catch (Exception e){
-            x = -1;
+            x = 0;
         }
 
         return x;
@@ -185,15 +199,21 @@ public class FinanceDataSource {
 //    }
 //
     //Method to retrieve data from DB
-    public ArrayList<Finance> getFiances() {
+    public ArrayList<Finance> getFiances(int currentMonth, int currentYear) {
         //Instance Variable contains arraylist of Finance object
         ArrayList<Finance> finances = new ArrayList<Finance>();
 
         try {
-            //Get all data from contact
-            String query = "SELECT * FROM finance";
-            //Initialize cursor
-            Cursor cursor = database.rawQuery(query, null);
+
+            // Convert currentMonth and currentYear to String with leading zero if necessary
+            String currentMonthString = String.format("%02d", currentMonth);
+            String currentYearString = String.valueOf(currentYear);
+
+            // Query to retrieve data for the current month
+            String query = "SELECT * FROM finance WHERE strftime('%m', date/1000, 'unixepoch') = ? AND strftime('%Y', date/1000, 'unixepoch') = ?";
+            String[] selectionArgs = {currentMonthString, currentYearString};
+            Cursor cursor = database.rawQuery(query, selectionArgs);
+
             //Instance Variable
             Finance newFinance;
             cursor.moveToFirst();
