@@ -2,4 +2,28 @@
     <string name="app_name">Final Project Budget App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="income">Income</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="date">Date</string>
+    <string name="_10_30_1999">10/30/1999</string>
+    <string name="confirm">confirm</string>
+    <string name="category">Category:</string>
+    <string name="payment">Payment</string>
+    <string name="todo">TODO</string>
+    <string name="cancel">cancel</string>
+    <string name="save">Save</string>
+    <string name="pay">Pay</string>
+    <string name="red_bag">Red Bag</string>
+    <string name="saving">Saving</string>
+    <string name="transaction">Transaction</string>
+    <string name="other">Other</string>
+    <string name="gift">Gift</string>
+    <string name="stock">Stock</string>
+    <string name="_4_20_1999">4/20/1999</string>
+    <string name="money">money</string>
+    <string name="food">Food</string>
+    <string name="snacks">Snacks</string>
+    <string name="games">Games</string>
+    <string name="mortgage">Mortgage</string>
+    <string name="toy">Toy</string>
 </resources>

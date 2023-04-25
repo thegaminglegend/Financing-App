@@ -7,14 +7,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="false"
         android:layout_marginStart="15dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="17dp"
-        android:text="Category"
+        android:text="@string/category"
         android:textStyle="bold" />
 
     <TextView
@@ -22,23 +20,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textCategory"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
         android:layout_marginTop="4dp"
-        android:text="4/20/1999" />
+        android:text="@string/_4_20_1999" />
 
     <TextView
         android:id="@+id/textMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="false"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginLeft="5dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="26dp"
-        android:text="money" />
+        android:text="@string/money" />
 
 
 </RelativeLayout>

@@ -20,9 +20,9 @@ import java.util.TimeZone;
 Name: Mengen Zhao
 Professor: Dr. Osborne
 Program: Financing App
-Date: 4/15/2023
-Description: An app that records financial spending and gain
-The DatePickerDialog class that shows a dialog for the user to pick time.
+Date: 4/25/2023
+Description: An app that records financial spending and gain and displays it each month
+The DatePickerDialog class that shows a dialog for the user to pick a date and change the date.
 */
 
 public class DatePickerDialog extends DialogFragment {
@@ -85,7 +85,7 @@ public class DatePickerDialog extends DialogFragment {
         return view;
     }
 
-    //Method to save the selected date and set the Birthday text to the date
+    //Method to save the selected date and set the date text to the chosen date
     private void saveItem(Calendar selectedTime) {
         SaveDateListener activity = (SaveDateListener) getActivity();
         //call function to set birthday date to selected time

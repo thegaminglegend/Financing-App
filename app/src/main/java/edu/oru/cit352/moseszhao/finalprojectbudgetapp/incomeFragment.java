@@ -1,5 +1,6 @@
 package edu.oru.cit352.moseszhao.finalprojectbudgetapp;
 
+//Imports
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+/*
+Name: Mengen Zhao
+Professor: Dr. Osborne
+Program: Financing App
+Date: 4/25/2023
+Description: An app that records financial spending and gain and displays it each month.
+incomeFragment class manages the income fragment view to display and initializes the buttons
+*/
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,9 +65,6 @@ public class incomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
-
     }
 
     @Override
@@ -99,7 +106,7 @@ public class incomeFragment extends Fragment {
         btnGift.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                category.setText("TOY");
+                category.setText("GIFT");
 
             }
         });

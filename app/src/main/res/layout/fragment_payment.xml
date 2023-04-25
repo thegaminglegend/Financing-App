@@ -16,11 +16,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:text="Food"
-            app:cornerRadius="2dp"
             android:backgroundTint="@color/paymentRed"
+            android:text="@string/food"
+            app:cornerRadius="2dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/buttonToy"
@@ -28,11 +29,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:text="Toy"
-            app:cornerRadius="2dp"
             android:backgroundTint="@color/paymentRed"
+            android:text="@string/toy"
+            app:cornerRadius="2dp"
             app:layout_constraintStart_toEndOf="@+id/buttonFood"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/buttonSnacks"
@@ -40,11 +42,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:text="Snacks"
-            app:cornerRadius="2dp"
             android:backgroundTint="@color/paymentRed"
+            android:text="@string/snacks"
+            app:cornerRadius="2dp"
             app:layout_constraintStart_toEndOf="@+id/buttonToy"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/buttonMortgage"
@@ -52,11 +55,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:text="Mortgage"
-            app:cornerRadius="2dp"
             android:backgroundTint="@color/paymentRed"
+            android:text="@string/mortgage"
+            app:cornerRadius="2dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonFood" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonFood"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/buttonTransaction"
@@ -64,11 +68,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:text="Transaction"
-            app:cornerRadius="2dp"
             android:backgroundTint="@color/paymentRed"
+            android:text="@string/transaction"
+            app:cornerRadius="2dp"
             app:layout_constraintStart_toEndOf="@+id/buttonMortgage"
-            app:layout_constraintTop_toBottomOf="@+id/buttonToy" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonToy"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/buttonGames"
@@ -76,11 +81,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:text="Games"
-            app:cornerRadius="2dp"
             android:backgroundTint="@color/paymentRed"
+            android:text="@string/games"
+            app:cornerRadius="2dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonMortgage" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonMortgage"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/buttonOtherPayment"
@@ -88,10 +94,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:text="Other"
-            app:cornerRadius="2dp"
             android:backgroundTint="@color/paymentRed"
+            android:text="@string/other"
+            app:cornerRadius="2dp"
             app:layout_constraintStart_toEndOf="@+id/buttonGames"
-            app:layout_constraintTop_toBottomOf="@+id/buttonTransaction" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonTransaction"
+            tools:ignore="TextContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

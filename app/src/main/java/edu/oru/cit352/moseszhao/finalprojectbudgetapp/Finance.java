@@ -3,16 +3,17 @@ package edu.oru.cit352.moseszhao.finalprojectbudgetapp;
 /*
 Name: Mengen Zhao
 Professor: Dr. Osborne
-Program: Contact List app
-Date: 2/28/2023
-Description: A contact list App that stores user's information. The class that stores properties for a contact
+Program: Financing App
+Date: 4/25/2023
+Description: An app that records financial spending and gain and displays it each month
+The Finance class stores the information for each financial instance and has getters and setters to set the variables
 */
 
 //Import
 import java.util.Calendar;
 
 public class Finance {
-    //Variables for the properties of a contact
+    //Variables for the properties of a financial instance
     private int financeID;
     private String category;
     private float amount;

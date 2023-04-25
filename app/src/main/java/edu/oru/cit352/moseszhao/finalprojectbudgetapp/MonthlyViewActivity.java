@@ -1,4 +1,5 @@
 package edu.oru.cit352.moseszhao.finalprojectbudgetapp;
+
 //Imports
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,8 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,6 +19,16 @@ import org.w3c.dom.Text;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+/*
+Name: Mengen Zhao
+Professor: Dr. Osborne
+Program: Financing App
+Date: 4/25/2023
+Description: An app that records financial spending and gain and displays it each month.
+MonthlyViewActivity class manages the monthly view activity, initializes all buttons and displays
+Shows the financial instance in the database in a month of a year, and shows the total income, payment, and net
+*/
 
 public class MonthlyViewActivity extends AppCompatActivity {
 
@@ -46,8 +55,9 @@ public class MonthlyViewActivity extends AppCompatActivity {
         initNet(currentMonth, currentYear);
         initMonth();
         initChangeMonthButtons();
-        initRecyclerChangeEvent();
 
+        //Initialize change event
+        initRecyclerChangeEvent();
     }
 
     //Function to initialize button to add a financial instance
@@ -138,7 +148,6 @@ public class MonthlyViewActivity extends AppCompatActivity {
         //Find View with ID
         TextView monthDate = findViewById(R.id.textViewMonthDate);
 
-
         // Create an array of month names in English
         String[] monthNames = {"January", "February", "March",
                 "April", "May", "June",
@@ -147,7 +156,6 @@ public class MonthlyViewActivity extends AppCompatActivity {
 
         // Set the month and year as text in the TextView
         monthDate.setText(monthNames[currentMonth-1] + " " + currentYear);
-
 
     }
 
@@ -193,7 +201,7 @@ public class MonthlyViewActivity extends AppCompatActivity {
         });
     }
 
-    //Function to set the amount when it is changed
+    //Function to change the net, payment, and income view when a financial instance is deleted
     private void initRecyclerChangeEvent() {
         //Find View by ID
         final RecyclerView rvFinances = findViewById(R.id.rvFinance);

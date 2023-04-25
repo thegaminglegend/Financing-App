@@ -15,10 +15,11 @@
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/incomeGreen"
 
-        android:text="Income"
+        android:text="@string/income"
         app:cornerRadius="2dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/buttonPayment"
@@ -26,11 +27,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="88dp"
-        android:text="Payment"
-        app:cornerRadius="2dp"
         android:backgroundTint="@color/paymentRed"
+        android:text="@string/payment"
+        app:cornerRadius="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck" />
 
 
     <androidx.fragment.app.FragmentContainerView
@@ -50,14 +52,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Enter Amount"
+        android:hint="@string/enter_amount"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.573"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewCategory"
+        tools:ignore="TextContrastCheck"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/buttonDate"
@@ -65,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="32dp"
-        android:text="Date"
+        android:text="@string/date"
         app:cornerRadius="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextAmount" />
@@ -76,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
-        android:text="10/30/1999"
+        android:text="@string/_10_30_1999"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/buttonDate"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextAmount" />
@@ -87,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="confirm"
+        android:text="@string/confirm"
         app:cornerRadius="2dp"
         app:layout_constraintStart_toEndOf="@+id/textViewDate"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextAmount" />
@@ -98,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:text="Category: "
+        android:text="@string/category"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +129,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDate"
-        app:srcCompat="@drawable/calendar" />
+        app:srcCompat="@drawable/calendar"
+        android:contentDescription="@string/todo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

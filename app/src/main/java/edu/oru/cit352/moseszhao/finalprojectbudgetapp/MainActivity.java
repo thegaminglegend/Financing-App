@@ -1,7 +1,6 @@
 package edu.oru.cit352.moseszhao.finalprojectbudgetapp;
 
 //Imports
-
 import static com.google.android.material.internal.ViewUtils.hideKeyboard;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +27,15 @@ import org.w3c.dom.Text;
 import java.time.Month;
 import java.util.Calendar;
 
+/*
+Name: Mengen Zhao
+Professor: Dr. Osborne
+Program: Financing App
+Date: 4/25/2023
+Description: An app that records financial spending and gain and displays it each month.
+MainActivity class manages the main activity initializes all buttons and displays
+Stores a financial instance in the Database and opens up monthlyViewActivity
+*/
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.SaveDateListener {
 
@@ -98,8 +106,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 currentFinance.setCategory(tvCategory.getText().toString());
             }
         });
-
-
     }
 
     //Function to initialize the buttons to control fragments
@@ -230,7 +236,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                         wasSuccessful = fs.insertFinance(currentFinance);
                         //If inserted update the financeID
                         if(wasSuccessful){
-                            int newID = fs.getLastContactID();
+                            int newID = fs.getLastFinanceID();
                             currentFinance.setFinanceID(newID);
                         }
                     }
@@ -256,6 +262,5 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
     }
-
 
 }

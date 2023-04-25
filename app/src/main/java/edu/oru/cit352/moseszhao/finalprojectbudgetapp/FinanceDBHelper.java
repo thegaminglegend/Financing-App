@@ -10,7 +10,7 @@ import android.util.Log;
 Name: Mengen Zhao
 Professor: Dr. Osborne
 Program: Financing App
-Date: 4/15/2023
+Date: 4/25/2023
 Description: An app that records financial spending and gain
 Class to help to manage Database to create table and update DB when version change
 */

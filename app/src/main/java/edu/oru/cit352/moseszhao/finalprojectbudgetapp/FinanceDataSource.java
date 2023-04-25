@@ -12,9 +12,10 @@ import java.util.Calendar;
 /*
 Name: Mengen Zhao
 Professor: Dr. Osborne
-Program: Contact List app
-Date: 2/28/2023
-Description: A contact list App that stores user's information. Class to manage database
+Program: Financing App
+Date: 4/25/2023
+Description: An app that records financial spending and gain and displays it each month.
+FinanceDataSource class uses FinanceDBHelper to perform database insert, update, delete, calculations
 */
 
 public class FinanceDataSource {
@@ -86,13 +87,13 @@ public class FinanceDataSource {
     }
 
     //Method to get the Id of the last inserted finance instance in the database
-    public int getLastContactID(){
+    public int getLastFinanceID(){
         //declare variables
         int lastId = -1;
 
         try {
-            //Get the last contact id
-            String query = "Select MAX(_id) from contact";
+            //Get the last Finance id
+            String query = "Select MAX(_id) from finance";
             //Pointer to points to the last row of the database
             Cursor cursor = database.rawQuery(query, null);
             //Point cursor to the first row after the query
@@ -108,7 +109,7 @@ public class FinanceDataSource {
         return lastId;
     }
 
-    //Function to get the sum of all pay
+    //Function to get the sum of all pay of a month in a year
     public float getSumPay(int currentMonth, int currentYear){
 
         //Instance variable
@@ -140,7 +141,7 @@ public class FinanceDataSource {
         return x;
     }
 
-    //Function to get the sum of all income
+    //Function to get the sum of all income of a month of a year
     public float getSumIncome(int currentMonth, int currentYear){
 
         //Instance variable
@@ -171,7 +172,6 @@ public class FinanceDataSource {
 
         return x;
     }
-
 
     //Method to retrieve data from DB
     public ArrayList<Finance> getFiances(int currentMonth, int currentYear) {
@@ -215,36 +215,6 @@ public class FinanceDataSource {
         }
         return finances;
     }
-
-
-
-//
-//    //Method to  get specific information with contactId
-//    public Contact getSpecificContact(int contactId) {
-//        //Instance Variable
-//        Contact contact = new Contact();
-//        //Get the information of that contact with contactId
-//        String query = "SELECT * FROM contact WHERE _id =" + contactId;
-//        //Cursor
-//        Cursor cursor = database.rawQuery(query, null);
-//        //Get all the information to store in the contact object
-//        if (cursor.moveToFirst()) {
-//            contact.setContactID(cursor.getInt(0));
-//            contact.setContactName(cursor.getString(1));
-//            contact.setStreetAddress(cursor.getString(2));
-//            contact.setCity(cursor.getString(3));
-//            contact.setState(cursor.getString(4));
-//            contact.setZipCode(cursor.getString(5));
-//            contact.setPhoneNumber(cursor.getString(6));
-//            contact.setCellNumber(cursor.getString(7));
-//            contact.seteMail(cursor.getString(8));
-//            Calendar calendar = Calendar.getInstance();
-//            calendar.setTimeInMillis(Long.valueOf(cursor.getString(9)));
-//            contact.setBirthday(calendar);
-//            cursor.close();
-//        }
-//        return contact;
-//    }
 
     //Method for deleting Contact
     public boolean deleteFinance(int financeID) {

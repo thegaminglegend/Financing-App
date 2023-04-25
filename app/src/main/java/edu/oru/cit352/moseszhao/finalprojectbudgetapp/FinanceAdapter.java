@@ -19,14 +19,14 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.widget.Toast;
 
-
 /*
 Name: Mengen Zhao
 Professor: Dr. Osborne
-Program: Contact List app
-Date: 3、2/2023
-Description: A contact list App that stores user's information.
-Class that extends RecyclerView.Adapter to manage the data
+Program: Financing App
+Date: 4/25/2023
+Description: An app that records financial spending and gain and displays it each month
+Finance Adapter Class that extends RecyclerView.Adapter to manage the data for the recycle view
+to display a financial instance and delete it
 */
 
 public class FinanceAdapter extends RecyclerView.Adapter {
@@ -70,8 +70,6 @@ public class FinanceAdapter extends RecyclerView.Adapter {
         parentContext = context;
     }
 
-
-
     @NonNull
     @Override
     //Initialize view holder
@@ -80,7 +78,7 @@ public class FinanceAdapter extends RecyclerView.Adapter {
         return new FinanceViewHolder(v);
     }
 
-    //Get the data give it to viewHolder
+    //Get the data give it to viewHolder that would be shown in recycle view
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         FinanceViewHolder cvh = (FinanceViewHolder) holder;
@@ -89,7 +87,7 @@ public class FinanceAdapter extends RecyclerView.Adapter {
         cvh.getDateTextView().setText(DateFormat.format("MM/dd/yyyy",financeData.get(position).getDate().getTimeInMillis()));
         cvh.getCategoryTextView().setText(financeData.get(position).getCategory());
 
-        //Check if is pay or not and set the text color
+        //Check if the financial instance is pay or not and set the text color
         if(financeData.get(position).getPayOrIncome().equals("true")){
             cvh.getMoneyTextView().setTextColor(Color.parseColor("#e3513e"));
         } else {
@@ -118,7 +116,7 @@ public class FinanceAdapter extends RecyclerView.Adapter {
                         .setNegativeButton("Cancel", null)
                         .show();
 
-                // Return true to in
+                // Return true
                 return true;
             }
         });

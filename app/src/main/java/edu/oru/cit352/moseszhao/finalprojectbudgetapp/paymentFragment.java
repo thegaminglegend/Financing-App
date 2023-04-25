@@ -1,16 +1,24 @@
 package edu.oru.cit352.moseszhao.finalprojectbudgetapp;
 
+//Imports
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+/*
+Name: Mengen Zhao
+Professor: Dr. Osborne
+Program: Financing App
+Date: 4/25/2023
+Description: An app that records financial spending and gain and displays it each month.
+paymentFragment class manages the payment fragment view to display and initializes the buttons
+*/
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,11 +26,7 @@ import android.widget.TextView;
  * create an instance of this fragment.
  */
 
-
-
 public class paymentFragment extends Fragment {
-
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,8 +66,6 @@ public class paymentFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
